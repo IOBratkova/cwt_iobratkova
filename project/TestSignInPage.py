@@ -31,4 +31,6 @@ class TestSignInPage(unittest.TestCase):
         self.assertNotEqual(login, None)
         email = self.signinpage.email()
         self.assertNotEqual(email, None)
+        name = (self.signinpage.firstName(), self.signinpage.lastName())
+        self.assertNotEqual(name, None)
         self.signinpage.close_driver()
