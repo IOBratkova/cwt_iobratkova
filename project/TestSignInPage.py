@@ -42,4 +42,6 @@ class TestSignInPage(unittest.TestCase):
         passwords = (self.signinpage.password(), self.signinpage.ppassword())
         self.assertNotEqual(passwords[0], None)
         self.assertNotEqual(passwords[1], None)
+        complete = self.signinpage.autocomplete()
+        self.assertNotEqual(complete, None)
         self.signinpage.close_driver()
