@@ -52,6 +52,9 @@ class SignInPage(Page):
     def set_login(self, value):
         return self.paste_to_element('#login', value)
 
+    def set_email(self, value):
+        return self.paste_to_element('#email', value)
+
     # CLICK METHODS
     def click_radio_button_master(self):
         self.click_on_element('#master')

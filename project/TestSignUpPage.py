@@ -64,7 +64,13 @@ class TestSignUpPage(unittest.TestCase):
     def test_set_information(self):
         self.start_up()
         self.signinpage.open_url()
+
         self.signinpage.set_login('_boNni1e')
         a = self.signinpage.login().get_attribute('value')
         b = self.driver.find_element_by_id('#login').get_attribute('value')
+        self.assertEqual(a, b)
+
+        self.signinpage.set_email('bonnie_parker@ya.ru')
+        a = self.signinpage.email().get_attribute('value')
+        b = self.driver.find_element_by_id('#email').get_attribute('value')
         self.assertEqual(a, b)
