@@ -23,7 +23,7 @@ class TestSignInPage(unittest.TestCase):
         self.signinpage.close_driver()
         self.assertEqual('MADE HANDMADE', title)
 
-    def test_find_elements(self):
+    def test_find_visible_elements(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.open_url()
