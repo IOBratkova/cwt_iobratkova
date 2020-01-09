@@ -55,6 +55,12 @@ class SignInPage(Page):
     def set_email(self, value):
         return self.paste_to_element('#email', value)
 
+    def set_firstName(self, value):
+        return self.paste_to_element('#firstname', value)
+
+    def set_lastName(self, value):
+        return self.paste_to_element('#lastname', value)
+
     # CLICK METHODS
     def click_radio_button_master(self):
         self.click_on_element('#master')
