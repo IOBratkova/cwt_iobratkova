@@ -70,6 +70,9 @@ class SignInPage(Page):
     def set_autocomplete(self, value):
         return self.paste_to_element('#autocomplete', value)
 
+    def set_avatar(self, value):
+        return self.paste_to_element('#avatar', value)
+
     # CLICK METHODS
     def click_radio_button_master(self):
         self.click_on_element('#master')

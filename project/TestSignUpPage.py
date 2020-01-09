@@ -95,3 +95,8 @@ class TestSignUpPage(unittest.TestCase):
         a = self.signinpage.autocomplete().get_attribute('value')
         b = self.driver.find_element_by_id('#autocomplete').get_attribute('value')
         self.assertEqual(a, b)
+
+        self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova')
+        a = self.signinpage.avatar().get_attribute('value')
+        b = self.driver.find_element_by_id('#avatar').get_attribute('value')
+        self.assertEqual(a, b)
