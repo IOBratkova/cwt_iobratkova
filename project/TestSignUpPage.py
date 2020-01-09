@@ -115,8 +115,8 @@ class TestSignUpPage(unittest.TestCase):
         b = self.driver.find_element_by_id('#master').get_attribute('value')
         self.assertEqual(a, b)
 
-        # self.signinpage.click_radio_button_see()
-        # self.signinpage.select_value_to_see(0)
-        # a = self.signinpage.master().get_attribute('value')
-        # b = self.driver.find_element_by_id('#see').get_attribute('value')
-        # self.assertEqual(a, b)
+        self.signinpage.click_radio_button_see()
+        self.signinpage.select_value_to_see(0)
+        a = self.signinpage.master().get_attribute('value')
+        b = self.driver.find_element_by_id('#see').get_attribute('value')
+        self.assertEqual(a, b)
