@@ -3,6 +3,7 @@ from classes.signinpage import SignInPage
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 class TestSignUpPage(unittest.TestCase):
     def start_up(self):
         self.url = 'http://127.0.0.1:8080/#/signup'
@@ -54,4 +55,7 @@ class TestSignUpPage(unittest.TestCase):
         self.signinpage.click_radio_button_master()
         select_master = self.signinpage.master()
         self.assertNotEqual(select_master, None)
+        self.signinpage.click_radio_button_see()
+        select_see = self.signinpage.see()
+        self.assertNotEqual(select_see, None)
 
