@@ -19,15 +19,31 @@ from classes.page import Page
 # ya_page.find_element_by_id('text')
 # ya_page.paste_to_element('text', 'кот')
 # text = ya_page.find_element_by_id('text')
-
+from selenium.webdriver.support.ui import WebDriverWait
 url = 'http://127.0.0.1:8080/#/signup'
 driver = webdriver.Chrome('./chromedriver')
-driver.maximize_window()
 signinpage = SignInPage(driver, url)
 signinpage.open_url()
-
-print(signinpage.master())
+signinpage.set_login('myNiceLogin')
+signinpage.set_email('thisisemail@em.com')
+signinpage.set_firstName('Василий')
+signinpage.set_lastName('Котиков')
+signinpage.set_textarea('Я люблю котиков. Мур!')
 signinpage.click_radio_button_master()
-print(signinpage.master())
 signinpage.select_value_to_master(2)
-print('+++++++++++++++++++++++++++++')
+signinpage.set_autocomplete('Б')
+signinpage.click_on_autocomplete(3)
+signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
+signinpage.set_password('cat')
+signinpage.set_ppassword('cat')
+signinpage.click_button_submit()
+turl =  driver.current_url
+signinpage.click_button_submit()
+WebDriverWait(signinpage.driver, 5).until(
+    lambda kek: signinpage.driver.current_url != turl
+)
+
+
+result = 'lol'
+print(result)
+
