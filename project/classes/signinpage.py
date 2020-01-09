@@ -61,6 +61,12 @@ class SignInPage(Page):
     def set_lastName(self, value):
         return self.paste_to_element('#lastname', value)
 
+    def set_password(self, value):
+        return self.paste_to_element('#password', value)
+
+    def set_ppassword(self, value):
+        return self.paste_to_element('#ppassword', value)
+
     # CLICK METHODS
     def click_radio_button_master(self):
         self.click_on_element('#master')

@@ -82,3 +82,11 @@ class TestSignUpPage(unittest.TestCase):
         b = (self.driver.find_element_by_id('#firstname').get_attribute('value'),
              self.driver.find_element_by_id('#lastname').get_attribute('value'))
         self.assertEqual(a, b)
+
+        self.signinpage.set_password('klayd')
+        self.signinpage.set_ppassword('klayd')
+        a = (self.signinpage.password().get_attribute('value'),
+             self.signinpage.ppassword().get_attribute('value'))
+        b = (self.driver.find_element_by_id('#password').get_attribute('value'),
+             self.driver.find_element_by_id('#ppassword').get_attribute('value'))
+        self.assertEqual(a, b)
