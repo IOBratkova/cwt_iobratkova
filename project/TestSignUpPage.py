@@ -3,7 +3,7 @@ from classes.signinpage import SignInPage
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 
-class TestSignInPage(unittest.TestCase):
+class TestSignUpPage(unittest.TestCase):
     def start_up(self):
         self.url = 'http://127.0.0.1:8080/#/signup'
         self.driver = webdriver.Chrome('./chromedriver')
