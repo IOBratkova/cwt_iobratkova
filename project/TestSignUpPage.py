@@ -48,6 +48,8 @@ class TestSignUpPage(unittest.TestCase):
         self.assertNotEqual(complete, None)
         submit = self.signinpage.submit()
         self.assertNotEqual(submit, None)
+        avatar = self.signinpage.avatar()
+        self.assertNotEqual(avatar, None)
 
     def test_find_invisible_elements(self):
         self.start_up()
