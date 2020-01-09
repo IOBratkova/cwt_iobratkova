@@ -20,7 +20,7 @@ class TestSignInPage(unittest.TestCase):
         self.start_up()
         self.signinpage.open_url()
         title = self.signinpage.driver.title
-        self.signinpage.driver.close()
+        self.signinpage.close_driver()
         self.assertEqual('MADE HANDMADE', title)
 
     def test_find_elements(self):
@@ -29,3 +29,6 @@ class TestSignInPage(unittest.TestCase):
         self.signinpage.open_url()
         login = self.signinpage.login()
         self.assertNotEqual(login, None)
+        email = self.signinpage.email()
+        self.assertNotEqual(email, None)
+        self.signinpage.close_driver()
