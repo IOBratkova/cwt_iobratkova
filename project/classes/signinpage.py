@@ -1,4 +1,5 @@
 from classes.page import Page
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class SignInPage(Page):
@@ -108,3 +109,19 @@ class SignInPage(Page):
 
     def click_button_submit(self):
         return self.click_on_element('#submit')
+
+    def click_on_autocomplete(self, index):
+        try:
+            WebDriverWait(self.driver, 10).until(
+                lambda kek: self.driver.find_element_by_xpath(
+                    '//*[@id="list-14"]/div[@aria-labelledby="list-item-20-' + str(index) + '"]')
+            )
+            self.driver.find_element_by_xpath(
+                '//*[@id="list-14"]/div[@aria-labelledby="list-item-20-' + str(index) + '"]').click()
+        except Exception:
+            WebDriverWait(self.driver, 10).until(
+                lambda kek: self.driver.find_element_by_xpath(
+                    '//*[@id="list-19"]/div[@aria-labelledby="list-item-25-' + str(index) + '"]')
+            )
+            self.driver.find_element_by_xpath(
+                '//*[@id="list-19"]/div[@aria-labelledby="list-item-25-' + str(index) + '"]').click()

@@ -127,3 +127,26 @@ class TestSignUpPage(unittest.TestCase):
         turl = self.url
         WebDriverWait(self.driver, 5)
         self.assertEqual(turl, self.url)
+
+    def test_success_registration_master(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.set_login('myNiceLogin')
+        self.signinpage.set_email('thisisemail@em.com')
+        self.signinpage.set_firstName('Василий')
+        self.signinpage.set_lastName('Котиков')
+        self.signinpage.set_textarea('Я люблю котиков. Мур!')
+        self.signinpage.click_radio_button_master()
+        self.signinpage.select_value_to_master(2)
+        self.signinpage.set_autocomplete('Б')
+        self.signinpage.click_on_autocomplete(3)
+        self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
+        self.signinpage.set_password('cat')
+        self.signinpage.set_ppassword('cat')
+        self.signinpage.click_button_submit()
+        turl = self.driver.current_url
+        self.signinpage.click_button_submit()
+        WebDriverWait(self.signinpage.driver, 5).until(
+            lambda kek: self.signinpage.driver.current_url != turl
+        )
+        self.assertNotEqual(self.signinpage.driver.current_url, turl)

@@ -38,3 +38,12 @@ class Page:
         drp = Select(http_element)
         drp.select_by_visible_text(text)
         return drp
+
+    def find_my_element_by_xpath(self, xpath):
+        return WebDriverWait(self.driver, 100).until(
+            lambda driver: self.driver.find_element_by_xpath(xpath))
+
+    def click_element_by_xpath(self, xpath):
+        WebDriverWait(self.driver, 5).until(
+            lambda driver: self.driver.find_element_by_xpath(xpath))
+        self.driver.find_element_by_xpath(xpath).click()
