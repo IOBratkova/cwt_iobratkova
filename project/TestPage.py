@@ -1,5 +1,6 @@
 import unittest
 from classes.page import Page
+from selenium import webdriver
 
 
 class TestPage(unittest.TestCase):
