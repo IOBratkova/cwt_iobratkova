@@ -9,6 +9,9 @@ class Page:
     def open_url(self):
         self.driver.get(self.url)
 
+    def close_driver(self):
+        self.driver.close()
+
     def find_element_by_id(self, id):
         return WebDriverWait(self.driver, 100).until(
             lambda driver: self.driver.find_element_by_id(id))
