@@ -73,6 +73,9 @@ class SignInPage(Page):
     def set_avatar(self, value):
         return self.paste_to_element('#avatar', value)
 
+    def set_textarea(self, value):
+        return self.paste_to_element('#textarea', value)
+
     # CLICK METHODS
     def click_radio_button_master(self):
         self.click_on_element('#master')

@@ -100,3 +100,11 @@ class TestSignUpPage(unittest.TestCase):
         a = self.signinpage.avatar().get_attribute('value')
         b = self.driver.find_element_by_id('#avatar').get_attribute('value')
         self.assertEqual(a, b)
+
+        self.signinpage.set_textarea('Нынче Бонни и Клайд - знаменитый дуэт,\n'
+                                     'Все газеты о них трубят.\n'
+                                     'После их "работы" свидетелей нет,\n'
+                                     'Остается лишь смерти смрад.\n')
+        a = self.signinpage.textArea().get_attribute('value')
+        b = self.driver.find_element_by_id('#textarea').get_attribute('value')
+        self.assertEqual(a, b)
