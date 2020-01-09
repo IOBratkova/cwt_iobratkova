@@ -1,4 +1,4 @@
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
 
 
 class Page:
@@ -23,4 +23,18 @@ class Page:
         self.driver.find_element_by_id(id).send_keys(value)
 
     def click_on_element(self, id):
-        return self.driver.find_element_by_id(id).click()
+        WebDriverWait(self.driver, 5).until(
+            lambda driver: self.driver.find_element_by_id(id))
+        self.driver.find_element_by_id(id).click()
+
+    def select_element_by_index(self, id, index):
+        http_element = self.driver.find_element_by_id(id)
+        drp = Select(http_element)
+        drp.select_by_index(index)
+        return drp
+
+    def select_element_by_visible_text(self, id, text):
+        http_element = self.driver.find_element_by_id(id)
+        drp = Select(http_element)
+        drp.select_by_visible_text(text)
+        return drp

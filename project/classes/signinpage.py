@@ -76,9 +76,32 @@ class SignInPage(Page):
     def set_textarea(self, value):
         return self.paste_to_element('#textarea', value)
 
+    # SELECT METHODS
+    def select_value_to_master(self, element):
+        element_type = type(element)
+        teg = '#select_1'
+        if element_type == type('lol'):
+            return self.select_element_by_visible_text(teg, element)
+        else:
+            return self.select_element_by_index(teg, element)
+
+    def select_value_to_see(self, element):
+        element_type = type(element)
+        teg = '#select_2'
+        if element_type == type('lol'):
+            return self.select_element_by_visible_text(teg, element)
+        else:
+            return self.select_element_by_index(teg, element)
+
     # CLICK METHODS
     def click_radio_button_master(self):
         self.click_on_element('#master')
 
     def click_radio_button_see(self):
         self.click_on_element('#see')
+
+    def click_on_select_1(self):
+        self.click_on_element('#select_2')
+
+    def click_on_select_2(self):
+        self.click_on_element('#select_2')
