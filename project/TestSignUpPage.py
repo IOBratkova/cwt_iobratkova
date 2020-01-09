@@ -28,7 +28,6 @@ class TestSignUpPage(unittest.TestCase):
     def test_find_visible_elements(self):
         self.start_up()
         self.signinpage.open_url()
-        self.signinpage.open_url()
         login = self.signinpage.login()
         self.assertNotEqual(login, None)
         email = self.signinpage.email()
@@ -91,10 +90,10 @@ class TestSignUpPage(unittest.TestCase):
              self.driver.find_element_by_id('#ppassword').get_attribute('value'))
         self.assertEqual(a, b)
 
-        self.signinpage.set_autocomplete('Нара')
-        a = self.signinpage.autocomplete().get_attribute('value')
-        b = self.driver.find_element_by_id('#autocomplete').get_attribute('value')
-        self.assertEqual(a, b)
+        # self.signinpage.set_autocomplete('Нара')
+        # a = self.signinpage.autocomplete().get_attribute('value')
+        # b = self.driver.find_element_by_id('#autocomplete').get_attribute('value')
+        # self.assertEqual(a, b)
 
         self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova')
         a = self.signinpage.avatar().get_attribute('value')
@@ -117,6 +116,14 @@ class TestSignUpPage(unittest.TestCase):
 
         self.signinpage.click_radio_button_see()
         self.signinpage.select_value_to_see(0)
-        a = self.signinpage.master().get_attribute('value')
+        a = self.signinpage.see().get_attribute('value')
         b = self.driver.find_element_by_id('#see').get_attribute('value')
         self.assertEqual(a, b)
+
+    def test_error_registration(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.click_button_submit()
+        turl = self.url
+        WebDriverWait(self.driver, 5)
+        self.assertEqual(turl, self.url)

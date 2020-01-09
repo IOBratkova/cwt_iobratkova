@@ -105,3 +105,6 @@ class SignInPage(Page):
 
     def click_on_select_2(self):
         self.click_on_element('#select_2')
+
+    def click_button_submit(self):
+        return self.click_on_element('#submit')
