@@ -22,6 +22,7 @@ class TestSignInPage(unittest.TestCase):
         title = self.signinpage.driver.title
         self.signinpage.close_driver()
         self.assertEqual('MADE HANDMADE', title)
+        # self.signinpage.close_driver()
 
     def test_find_visible_elements(self):
         self.start_up()
@@ -46,4 +47,11 @@ class TestSignInPage(unittest.TestCase):
         self.assertNotEqual(complete, None)
         submit = self.signinpage.submit()
         self.assertNotEqual(submit, None)
-        self.signinpage.close_driver()
+
+    def test_find_invisible_elements(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.click_radio_button_master()
+        select_master = self.signinpage.master()
+        self.assertNotEqual(select_master, None)
+
