@@ -39,5 +39,7 @@ class TestSignInPage(unittest.TestCase):
         self.assertNotEqual(note[1], None)
         text = self.signinpage.textArea()
         self.assertNotEqual(text, None)
-
+        passwords = (self.signinpage.password(), self.signinpage.ppassword())
+        self.assertNotEqual(passwords[0], None)
+        self.assertNotEqual(passwords[1], None)
         self.signinpage.close_driver()
