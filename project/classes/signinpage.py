@@ -67,6 +67,9 @@ class SignInPage(Page):
     def set_ppassword(self, value):
         return self.paste_to_element('#ppassword', value)
 
+    def set_autocomplete(self, value):
+        return self.paste_to_element('#autocomplete', value)
+
     # CLICK METHODS
     def click_radio_button_master(self):
         self.click_on_element('#master')

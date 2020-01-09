@@ -90,3 +90,8 @@ class TestSignUpPage(unittest.TestCase):
         b = (self.driver.find_element_by_id('#password').get_attribute('value'),
              self.driver.find_element_by_id('#ppassword').get_attribute('value'))
         self.assertEqual(a, b)
+
+        self.signinpage.set_autocomplete('Нара')
+        a = self.signinpage.autocomplete().get_attribute('value')
+        b = self.driver.find_element_by_id('#autocomplete').get_attribute('value')
+        self.assertEqual(a, b)
