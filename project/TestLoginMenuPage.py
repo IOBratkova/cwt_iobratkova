@@ -27,3 +27,11 @@ class TestLoginMenuPage(unittest.TestCase):
         wait_result = ([('Имя пользователя должно состоять только из латинских букв.', '#username'), ('Проверьте пароль', '#password')], None)
         self.assertEqual(result, wait_result)
 
+    def test_should_be_returned_invalid_password(self):
+        self.start_up()
+        self.lm.open_url()
+        self.lm.click_dropdown_sign_in()
+        self.lm.set_username('marry')
+        result = self.lm.click_login_button()
+        wait_result = ([(True, '#username'), ('Проверьте пароль', '#password')], None)
+        self.assertEqual(result, wait_result)
