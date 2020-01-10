@@ -16,6 +16,14 @@ class Page:
         return WebDriverWait(self.driver, 100).until(
             lambda driver: self.driver.find_element_by_id(id))
 
+    def find_my_element_by_xpath(self, xpath):
+        return WebDriverWait(self.driver, 100).until(
+            lambda driver: self.driver.find_element_by_xpath(xpath))
+
+    def find_element_by_tag(self, tag):
+        return WebDriverWait(self.driver, 100).until(
+            lambda driver: self.driver.find_element_by_tag_name(tag))
+
     def paste_to_element(self, id, value):
         WebDriverWait(self.driver, 100).until(
             lambda driver: self.driver.find_element_by_id(id))
@@ -39,10 +47,6 @@ class Page:
         drp.select_by_visible_text(text)
         return drp
 
-    def find_my_element_by_xpath(self, xpath):
-        return WebDriverWait(self.driver, 100).until(
-            lambda driver: self.driver.find_element_by_xpath(xpath))
-
     def click_element_by_xpath(self, xpath):
         WebDriverWait(self.driver, 5).until(
             lambda driver: self.driver.find_element_by_xpath(xpath))
@@ -50,3 +54,6 @@ class Page:
 
     def get_attribute_value(self, id):
         return self.driver.find_element_by_id(id).get_attribute('value')
+
+    def get_text(self, id):
+        return self.driver.find_element_by_id(id).text
