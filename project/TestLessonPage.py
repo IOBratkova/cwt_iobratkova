@@ -35,3 +35,13 @@ class TestLessonPage(unittest.TestCase):
         self.start_up()
         title = self.lesson.value_materials()
         self.assertEqual(title, 'Рассказы А.С. Пушкина, сборник Темный карнавал Рэя Бредбери')
+
+    def test_work_is_ok(self):
+        self.start_up()
+        title = self.lesson.value_imagelesson()
+        result = 'Результат\n' \
+                 'Все материалы выкладываем перед собой, как показано в МК.\n' \
+                 'Берем деревянное кольцо, круг или обруч, и начинаем его плотно обматывать заготовленными нитками.\n' \
+                 'Фиксируем.\n' \
+                 'Как только красивый ряд с бусинками из дерева или стекла готов, делаем три обычных ряда.'
+        self.assertEqual(title, result)
