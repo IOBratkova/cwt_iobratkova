@@ -191,40 +191,49 @@ class TestSignUpPage(unittest.TestCase):
     #     )
     #     user = self.driver.find_element_by_id('user-name').text
     #     self.assertEqual(user, 'Привет, Вика!')
+    #
+    # def test_error_registration_not_login(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     result = self.signinpage.click_button_submit()
+    #     self.assertNotEqual(result, True)
+    #
+    # def test_error_registration_invalid_login(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     self.signinpage.set_login('катя')
+    #     result = self.signinpage.click_button_submit()
+    #     self.assertNotEqual(result, True)
+    #
+    # def test_error_registration_not_email(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     self.signinpage.set_login('loginLoginLogin')
+    #     result = self.signinpage.click_button_submit()
+    #     self.assertNotEqual(result, True)
+    #
+    # def test_error_registration_invalid_email(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     self.signinpage.set_login('loginLoginLogin')
+    #     self.signinpage.set_email('invalid_email')
+    #     result = self.signinpage.click_button_submit()
+    #     self.assertNotEqual(result, True)
+    #
+    # def test_error_registration_not_avatar(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     self.signinpage.set_login('loginLoginLogin')
+    #     self.signinpage.set_email('invalid_email@ya.ri')
+    #     result = self.signinpage.click_button_submit()
+    #     self.assertNotEqual(result, True)
 
-    def test_error_registration_not_login(self):
-        self.start_up()
-        self.signinpage.open_url()
-        result = self.signinpage.click_button_submit()
-        self.assertNotEqual(result, True)
-
-    def test_error_registration_invalid_login(self):
-        self.start_up()
-        self.signinpage.open_url()
-        self.signinpage.set_login('катя')
-        result = self.signinpage.click_button_submit()
-        self.assertNotEqual(result, True)
-
-    def test_error_registration_not_email(self):
-        self.start_up()
-        self.signinpage.open_url()
-        self.signinpage.set_login('loginLoginLogin')
-        result = self.signinpage.click_button_submit()
-        self.assertNotEqual(result, True)
-
-    def test_error_registration_invalid_email(self):
-        self.start_up()
-        self.signinpage.open_url()
-        self.signinpage.set_login('loginLoginLogin')
-        self.signinpage.set_email('invalid_email')
-        result = self.signinpage.click_button_submit()
-        self.assertNotEqual(result, True)
-
-    def test_error_registration_not_avatar(self):
+    def test_error_registration_not_password(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
         self.signinpage.set_email('invalid_email@ya.ri')
+        self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
