@@ -21,16 +21,13 @@ from classes.page import Page
 # text = ya_page.find_element_by_id('text')
 from selenium.webdriver.support.ui import WebDriverWait
 driver = webdriver.Chrome('./chromedriver')
-url = 'http://localhost:8080/#/lessonlist'
-from classes.listlessons import LessonsList
-ll = LessonsList(driver, url)
-ll.open_url()
-ll.login_menu.click_dropdown_sign_in()
-ll.login_menu.click_login_button()
+url = 'http://localhost:8080/#/photolessons/3'
+from classes.lesson import Lessons
+lesson = Lessons(driver, url)
+lesson.open_url()
 
-ll.login_menu.set_username('pwd')
-ll.login_menu.set_password('pwd')
+var = driver.find_element_by_id('#imles').text
 
+print(var)
 
-result = ll.login_menu.click_login_button()
-print(result)
+# print(result)

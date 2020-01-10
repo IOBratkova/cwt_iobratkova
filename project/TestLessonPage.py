@@ -16,4 +16,8 @@ class TestLessonPage(unittest.TestCase):
         title = self.lesson.value_title()
         self.assertEqual(title, 'Сказка')
 
+    def test_author_is_ok(self):
+        self.start_up()
+        title = self.lesson.value_author()
+        self.assertEqual(title, 'admin')
 
