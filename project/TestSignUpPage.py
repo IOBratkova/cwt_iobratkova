@@ -220,3 +220,11 @@ class TestSignUpPage(unittest.TestCase):
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
+    def test_error_registration_not_avatar(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.set_login('loginLoginLogin')
+        self.signinpage.set_email('invalid_email@ya.ri')
+        result = self.signinpage.click_button_submit()
+        self.assertNotEqual(result, True)
+
