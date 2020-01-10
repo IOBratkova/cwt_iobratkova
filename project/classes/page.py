@@ -47,3 +47,6 @@ class Page:
         WebDriverWait(self.driver, 5).until(
             lambda driver: self.driver.find_element_by_xpath(xpath))
         self.driver.find_element_by_xpath(xpath).click()
+
+    def get_attribute_value(self, id):
+        return self.driver.find_element_by_id(id).get_attribute('value')

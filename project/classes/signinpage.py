@@ -108,7 +108,7 @@ class SignInPage(Page):
         self.click_on_element('#select_2')
 
     def click_button_submit(self):
-        return self.click_on_element('#submit')
+        return self.click_on_element('#submit') if self.get_error() else self.get_error()
 
     def click_on_autocomplete(self, index):
         try:
@@ -125,3 +125,21 @@ class SignInPage(Page):
             )
             self.driver.find_element_by_xpath(
                 '//*[@id="list-19"]/div[@aria-labelledby="list-item-25-' + str(index) + '"]').click()
+
+    def get_error(self):
+        if self.get_attribute_value('#login') == '':
+            return 'Заполните это поле.', '#login'
+        elif self.get_attribute_value('#email') == '':
+            return 'Заполните это поле.', '#email'
+        elif self.get_attribute_value('#lastname') == '':
+            return 'Заполните это поле.', '#lastname'
+        elif self.get_attribute_value('#firstname') == '':
+            return 'Заполните это поле.', '#firstname'
+        elif self.get_attribute_value('#password') == '':
+            return 'Заполните это поле.', '#password'
+        elif self.get_attribute_value('#ppassword') == '':
+            return 'Заполните это поле.', '#ppassword'
+        elif self.get_attribute_value('#avatar') == '':
+            return 'Заполните это поле.', '#avatar'
+        else:
+            return True

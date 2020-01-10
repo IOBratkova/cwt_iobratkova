@@ -191,3 +191,11 @@ class TestSignUpPage(unittest.TestCase):
         )
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Вика!')
+
+    # def test_error_registration(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     self.signinpage.click_button_submit()
+    #     turl = self.url
+    #     WebDriverWait(self.driver, 5)
+    #     self.assertEqual(turl, self.url)
