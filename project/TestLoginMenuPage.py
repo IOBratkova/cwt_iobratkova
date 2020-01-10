@@ -4,6 +4,7 @@ from selenium import webdriver
 from classes.loginmenu import LoginMenu
 
 
+
 class TestLoginMenuPage(unittest.TestCase):
     def start_up(self):
         self.url = 'http://127.0.0.1:8080/#/'
