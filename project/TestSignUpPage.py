@@ -172,3 +172,22 @@ class TestSignUpPage(unittest.TestCase):
         )
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Мария!')
+
+    def test_success_not_full_registration(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.set_login('loginLoginLogin')
+        self.signinpage.set_email('mailmailmail@em.com')
+        self.signinpage.set_firstName('Вика')
+        self.signinpage.set_lastName('Вернигорова')
+        self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
+        self.signinpage.set_password('cat')
+        self.signinpage.set_ppassword('cat')
+        self.signinpage.click_button_submit()
+        turl = self.driver.current_url
+        self.signinpage.click_button_submit()
+        WebDriverWait(self.signinpage.driver, 5).until(
+            lambda tmp: self.signinpage.driver.current_url != turl
+        )
+        user = self.driver.find_element_by_id('user-name').text
+        self.assertEqual(user, 'Привет, Вика!')
