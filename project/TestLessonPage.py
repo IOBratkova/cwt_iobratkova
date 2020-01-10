@@ -25,3 +25,8 @@ class TestLessonPage(unittest.TestCase):
         self.start_up()
         title = self.lesson.value_category()
         self.assertEqual(title, 'Категория: Ловец снов')
+
+    def test_info_is_ok(self):
+        self.start_up()
+        title = self.lesson.value_info()
+        self.assertEqual(title, 'Сказочное описание урока!')
