@@ -192,17 +192,17 @@ class TestSignUpPage(unittest.TestCase):
     #     user = self.driver.find_element_by_id('user-name').text
     #     self.assertEqual(user, 'Привет, Вика!')
 
-    def test_error_registration(self):
+    def test_error_registration_not_login(self):
         self.start_up()
         self.signinpage.open_url()
-
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-        self.signinpage.set_login('Виктория')
+    def test_error_registration_invalid_login(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.set_login('катя')
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-        self.signinpage.set_login('ikkimori')
-        result = self.signinpage.click_button_submit()
-        self.assertNotEqual(result, True)
+    

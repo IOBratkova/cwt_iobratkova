@@ -128,11 +128,16 @@ class SignInPage(Page):
                 '//*[@id="list-19"]/div[@aria-labelledby="list-item-25-' + str(index) + '"]').click()
 
     def check_login(self):
-        match = re.match('[a-zA-Z]', self.get_attribute_value('#login'))
-        if bool(match):
-            return True
-        else:
-            return 'Введите данные в указанном формате.', '#login'
+        return True if bool(re.match('[a-zA-Z]', self.get_attribute_value('#login'))) \
+                   else 'Введите данные в указанном формате.', '#login'
+
+    def check_email(self):
+        return True if bool(re.match('[a-zA-Z]@[a-zA-Z].[a-zA-Z]', self.get_attribute_value('#email'))) \
+                   else 'Введите данные в указанном формате.', '#email '
+
+    def check_password(self):
+        return True if bool(re.match('[a-zA-Z]', self.get_attribute_value('#password'))) \
+                   else 'Введите данные в указанном формате.', '#password'
 
     def get_error(self):
         if self.get_attribute_value('#login') == '':
@@ -141,15 +146,21 @@ class SignInPage(Page):
             return self.check_login()
         elif self.get_attribute_value('#email') == '':
             return 'Заполните это поле.', '#email'
+        elif self.get_attribute_value('#email') != '':
+            return self.check_email()
         elif self.get_attribute_value('#lastname') == '':
             return 'Заполните это поле.', '#lastname'
         elif self.get_attribute_value('#firstname') == '':
             return 'Заполните это поле.', '#firstname'
-        elif self.get_attribute_value('#password') == '':
-            return 'Заполните это поле.', '#password'
-        elif self.get_attribute_value('#ppassword') == '':
-            return 'Заполните это поле.', '#ppassword'
         elif self.get_attribute_value('#avatar') == '':
             return 'Заполните это поле.', '#avatar'
+        elif self.get_attribute_value('#password') == '':
+            return 'Заполните это поле.', '#password'
+        elif self.get_attribute_value('#password') != '':
+            self.check_password()
+        elif self.get_attribute_value('#ppassword') == '':
+            return 'Заполните это поле.', '#ppassword'
+        elif self.get_attribute_value('#ppassword') != self.get_attribute_value('#password'):
+            return 'Пароли не совпадают.', '#ppassword'
         else:
             return True
