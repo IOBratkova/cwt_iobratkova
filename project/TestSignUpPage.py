@@ -16,14 +16,14 @@ class TestSignUpPage(unittest.TestCase):
         self.assertNotEqual(signinpage.url, 40)
         self.assertEqual(signinpage.title, 'SignIn')
 
-    def test_open_url(self):
+    def test_url_should_open(self):
         self.start_up()
         self.signinpage.open_url()
         title = self.signinpage.driver.title
         self.signinpage.close_driver()
         self.assertEqual('MADE HANDMADE', title)
 
-    def test_find_visible_elements(self):
+    def test_should_be_found_visible_elements(self):
         self.start_up()
         self.signinpage.open_url()
         login = self.signinpage.login()
@@ -48,7 +48,7 @@ class TestSignUpPage(unittest.TestCase):
         avatar = self.signinpage.avatar()
         self.assertNotEqual(avatar, None)
 
-    def test_find_invisible_elements(self):
+    def test_should_be_found_invisible_elements(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.click_radio_button_master()
@@ -58,7 +58,7 @@ class TestSignUpPage(unittest.TestCase):
         select_see = self.signinpage.see()
         self.assertNotEqual(select_see, None)
 
-    def test_set_information(self):
+    def test_should_set_values(self):
         self.start_up()
         self.signinpage.open_url()
 
@@ -117,7 +117,7 @@ class TestSignUpPage(unittest.TestCase):
         b = self.driver.find_element_by_id('#see').get_attribute('value')
         self.assertEqual(a, b)
 
-    def test_success_registration_master(self):
+    def test_should_be_successfully_register_master(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('myNiceLogin')
@@ -141,7 +141,7 @@ class TestSignUpPage(unittest.TestCase):
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Василий!')
 
-    def test_success_registration_see(self):
+    def test_should_be_successfully_register_see(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('masha')
@@ -165,7 +165,7 @@ class TestSignUpPage(unittest.TestCase):
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Мария!')
 
-    def test_success_not_full_registration(self):
+    def test_should_be_successfully_register_mini_user(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
@@ -184,27 +184,27 @@ class TestSignUpPage(unittest.TestCase):
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Вика!')
 
-    def test_error_registration_not_login(self):
+    def test_should_be_return_login_error(self):
         self.start_up()
         self.signinpage.open_url()
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_invalid_login(self):
+    def test_should_be_return_invalid_login_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('катя')
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_not_email(self):
+    def test_should_be_return_email_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_invalid_email(self):
+    def test_should_be_return_invalid_email_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
@@ -212,7 +212,7 @@ class TestSignUpPage(unittest.TestCase):
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_not_name(self):
+    def test_should_be_return_name_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
@@ -226,7 +226,7 @@ class TestSignUpPage(unittest.TestCase):
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_not_avatar(self):
+    def test_should_be_return_avatar_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
@@ -236,7 +236,7 @@ class TestSignUpPage(unittest.TestCase):
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_not_password(self):
+    def test_should_be_return_password_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
@@ -247,7 +247,7 @@ class TestSignUpPage(unittest.TestCase):
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_invalid_password(self):
+    def test_should_be_return_invalid_password_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
@@ -259,7 +259,7 @@ class TestSignUpPage(unittest.TestCase):
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    def test_error_registration_invalid_passwords(self):
+    def test_should_be_return_invalid_passwords_error(self):
         self.start_up()
         self.signinpage.open_url()
         self.signinpage.set_login('loginLoginLogin')
