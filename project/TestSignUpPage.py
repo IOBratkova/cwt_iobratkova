@@ -147,4 +147,4 @@ class TestSignUpPage(unittest.TestCase):
             lambda tmp: self.signinpage.driver.current_url != turl
         )
         user = self.driver.find_element_by_id('user-name').text
-        self.assertNotEqual(user, 'Привет, Василий!')
+        self.assertEqual(user, 'Привет, Василий!')
