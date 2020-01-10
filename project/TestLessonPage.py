@@ -19,5 +19,9 @@ class TestLessonPage(unittest.TestCase):
     def test_author_is_ok(self):
         self.start_up()
         title = self.lesson.value_author()
-        self.assertEqual(title, 'admin')
+        self.assertEqual(title, 'Автор: admin')
 
+    def test_category_is_ok(self):
+        self.start_up()
+        title = self.lesson.value_category()
+        self.assertEqual(title, 'Категория: Ловец снов')
