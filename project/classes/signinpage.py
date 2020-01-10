@@ -1,5 +1,6 @@
 from classes.page import Page
 from selenium.webdriver.support.ui import WebDriverWait
+import re
 
 
 class SignInPage(Page):
@@ -126,9 +127,18 @@ class SignInPage(Page):
             self.driver.find_element_by_xpath(
                 '//*[@id="list-19"]/div[@aria-labelledby="list-item-25-' + str(index) + '"]').click()
 
+    def check_login(self):
+        match = re.match('[a-zA-Z]', self.get_attribute_value('#login'))
+        if bool(match):
+            return True
+        else:
+            return 'Введите данные в указанном формате.', '#login'
+
     def get_error(self):
         if self.get_attribute_value('#login') == '':
             return 'Заполните это поле.', '#login'
+        elif self.get_attribute_value('#login') != '':
+            return self.check_login()
         elif self.get_attribute_value('#email') == '':
             return 'Заполните это поле.', '#email'
         elif self.get_attribute_value('#lastname') == '':

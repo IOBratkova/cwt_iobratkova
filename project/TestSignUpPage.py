@@ -125,77 +125,84 @@ class TestSignUpPage(unittest.TestCase):
     #     WebDriverWait(self.driver, 5)
     #     self.assertEqual(turl, self.url)
 
-    def test_success_registration_master(self):
-        self.start_up()
-        self.signinpage.open_url()
-        self.signinpage.set_login('myNiceLogin')
-        self.signinpage.set_email('thisisemail@em.com')
-        self.signinpage.set_firstName('Василий')
-        self.signinpage.set_lastName('Котиков')
-        self.signinpage.set_textarea('Человек с планеты Земля')
-        self.signinpage.click_radio_button_master()
-        self.signinpage.select_value_to_master(2)
-        self.signinpage.set_autocomplete('Б')
-        self.signinpage.click_on_autocomplete(3)
-        self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
-        self.signinpage.set_password('cat')
-        self.signinpage.set_ppassword('cat')
-        self.signinpage.click_button_submit()
-        turl = self.driver.current_url
-        self.signinpage.click_button_submit()
-        WebDriverWait(self.signinpage.driver, 5).until(
-            lambda tmp: self.signinpage.driver.current_url != turl
-        )
-        user = self.driver.find_element_by_id('user-name').text
-        self.assertEqual(user, 'Привет, Василий!')
-
-    def test_success_registration_see(self):
-        self.start_up()
-        self.signinpage.open_url()
-        self.signinpage.set_login('masha')
-        self.signinpage.set_email('maria@em.com')
-        self.signinpage.set_firstName('Мария')
-        self.signinpage.set_lastName('Ветрова')
-        self.signinpage.set_textarea('Человек с планеты Земля')
-        self.signinpage.click_radio_button_see()
-        self.signinpage.select_value_to_see(2)
-        self.signinpage.set_autocomplete('Б')
-        self.signinpage.click_on_autocomplete(3)
-        self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
-        self.signinpage.set_password('cats')
-        self.signinpage.set_ppassword('cats')
-        self.signinpage.click_button_submit()
-        turl = self.driver.current_url
-        self.signinpage.click_button_submit()
-        WebDriverWait(self.signinpage.driver, 5).until(
-            lambda tmp: self.signinpage.driver.current_url != turl
-        )
-        user = self.driver.find_element_by_id('user-name').text
-        self.assertEqual(user, 'Привет, Мария!')
-
-    def test_success_not_full_registration(self):
-        self.start_up()
-        self.signinpage.open_url()
-        self.signinpage.set_login('loginLoginLogin')
-        self.signinpage.set_email('mailmailmail@em.com')
-        self.signinpage.set_firstName('Вика')
-        self.signinpage.set_lastName('Вернигорова')
-        self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
-        self.signinpage.set_password('cat')
-        self.signinpage.set_ppassword('cat')
-        self.signinpage.click_button_submit()
-        turl = self.driver.current_url
-        self.signinpage.click_button_submit()
-        WebDriverWait(self.signinpage.driver, 5).until(
-            lambda tmp: self.signinpage.driver.current_url != turl
-        )
-        user = self.driver.find_element_by_id('user-name').text
-        self.assertEqual(user, 'Привет, Вика!')
-
-    # def test_error_registration(self):
+    # def test_success_registration_master(self):
     #     self.start_up()
     #     self.signinpage.open_url()
+    #     self.signinpage.set_login('myNiceLogin')
+    #     self.signinpage.set_email('thisisemail@em.com')
+    #     self.signinpage.set_firstName('Василий')
+    #     self.signinpage.set_lastName('Котиков')
+    #     self.signinpage.set_textarea('Человек с планеты Земля')
+    #     self.signinpage.click_radio_button_master()
+    #     self.signinpage.select_value_to_master(2)
+    #     self.signinpage.set_autocomplete('Б')
+    #     self.signinpage.click_on_autocomplete(3)
+    #     self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
+    #     self.signinpage.set_password('cat')
+    #     self.signinpage.set_ppassword('cat')
     #     self.signinpage.click_button_submit()
-    #     turl = self.url
-    #     WebDriverWait(self.driver, 5)
-    #     self.assertEqual(turl, self.url)
+    #     turl = self.driver.current_url
+    #     self.signinpage.click_button_submit()
+    #     WebDriverWait(self.signinpage.driver, 5).until(
+    #         lambda tmp: self.signinpage.driver.current_url != turl
+    #     )
+    #     user = self.driver.find_element_by_id('user-name').text
+    #     self.assertEqual(user, 'Привет, Василий!')
+    #
+    # def test_success_registration_see(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     self.signinpage.set_login('masha')
+    #     self.signinpage.set_email('maria@em.com')
+    #     self.signinpage.set_firstName('Мария')
+    #     self.signinpage.set_lastName('Ветрова')
+    #     self.signinpage.set_textarea('Человек с планеты Земля')
+    #     self.signinpage.click_radio_button_see()
+    #     self.signinpage.select_value_to_see(2)
+    #     self.signinpage.set_autocomplete('Б')
+    #     self.signinpage.click_on_autocomplete(3)
+    #     self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
+    #     self.signinpage.set_password('cats')
+    #     self.signinpage.set_ppassword('cats')
+    #     self.signinpage.click_button_submit()
+    #     turl = self.driver.current_url
+    #     self.signinpage.click_button_submit()
+    #     WebDriverWait(self.signinpage.driver, 5).until(
+    #         lambda tmp: self.signinpage.driver.current_url != turl
+    #     )
+    #     user = self.driver.find_element_by_id('user-name').text
+    #     self.assertEqual(user, 'Привет, Мария!')
+    #
+    # def test_success_not_full_registration(self):
+    #     self.start_up()
+    #     self.signinpage.open_url()
+    #     self.signinpage.set_login('loginLoginLogin')
+    #     self.signinpage.set_email('mailmailmail@em.com')
+    #     self.signinpage.set_firstName('Вика')
+    #     self.signinpage.set_lastName('Вернигорова')
+    #     self.signinpage.set_avatar('/home/irina/repo/cwt_iobratkova/bonnie.jpg')
+    #     self.signinpage.set_password('cat')
+    #     self.signinpage.set_ppassword('cat')
+    #     self.signinpage.click_button_submit()
+    #     turl = self.driver.current_url
+    #     self.signinpage.click_button_submit()
+    #     WebDriverWait(self.signinpage.driver, 5).until(
+    #         lambda tmp: self.signinpage.driver.current_url != turl
+    #     )
+    #     user = self.driver.find_element_by_id('user-name').text
+    #     self.assertEqual(user, 'Привет, Вика!')
+
+    def test_error_registration(self):
+        self.start_up()
+        self.signinpage.open_url()
+
+        result = self.signinpage.click_button_submit()
+        self.assertNotEqual(result, True)
+
+        self.signinpage.set_login('Виктория')
+        result = self.signinpage.click_button_submit()
+        self.assertNotEqual(result, True)
+
+        self.signinpage.set_login('ikkimori')
+        result = self.signinpage.click_button_submit()
+        self.assertNotEqual(result, True)
