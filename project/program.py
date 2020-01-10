@@ -27,5 +27,9 @@ ll = LessonsList(driver, url)
 ll.open_url()
 ll.login_menu.click_dropdown_sign_in()
 ll.login_menu.click_login_button()
+
+ll.login_menu.set_username('сильвана')
+
+
 result = ll.login_menu.click_login_button()
 print(result)
