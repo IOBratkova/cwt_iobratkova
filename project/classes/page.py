@@ -16,6 +16,10 @@ class Page:
         return WebDriverWait(self.driver, 100).until(
             lambda driver: self.driver.find_element_by_id(id))
 
+    def find_elements_by_class_name(self, id):
+        return WebDriverWait(self.driver, 5).until(
+            lambda driver: self.driver.find_elements_by_class_name(id))
+
     def find_my_element_by_xpath(self, xpath):
         return WebDriverWait(self.driver, 100).until(
             lambda driver: self.driver.find_element_by_xpath(xpath))
