@@ -28,7 +28,8 @@ ll.open_url()
 ll.login_menu.click_dropdown_sign_in()
 ll.login_menu.click_login_button()
 
-ll.login_menu.set_username('marry')
+ll.login_menu.set_username('pwd')
+ll.login_menu.set_password('pwd')
 
 
 result = ll.login_menu.click_login_button()

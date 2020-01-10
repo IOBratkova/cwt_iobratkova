@@ -117,6 +117,11 @@ class TestSignUpPage(unittest.TestCase):
         b = self.driver.find_element_by_id('#see').get_attribute('value')
         self.assertEqual(a, b)
 
+    def wait_url(self, turl):
+        WebDriverWait(self.signinpage.driver, 5).until(
+            lambda tmp: self.signinpage.driver.current_url != turl
+        )
+
     def test_should_be_successfully_register_master(self):
         self.start_up()
         self.signinpage.open_url()
@@ -135,9 +140,7 @@ class TestSignUpPage(unittest.TestCase):
         self.signinpage.click_button_submit()
         turl = self.driver.current_url
         self.signinpage.click_button_submit()
-        WebDriverWait(self.signinpage.driver, 5).until(
-            lambda tmp: self.signinpage.driver.current_url != turl
-        )
+        self.wait_url(turl)
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Василий!')
 
@@ -159,9 +162,7 @@ class TestSignUpPage(unittest.TestCase):
         self.signinpage.click_button_submit()
         turl = self.driver.current_url
         self.signinpage.click_button_submit()
-        WebDriverWait(self.signinpage.driver, 5).until(
-            lambda tmp: self.signinpage.driver.current_url != turl
-        )
+        self.wait_url(turl)
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Мария!')
 
@@ -178,9 +179,7 @@ class TestSignUpPage(unittest.TestCase):
         self.signinpage.click_button_submit()
         turl = self.driver.current_url
         self.signinpage.click_button_submit()
-        WebDriverWait(self.signinpage.driver, 5).until(
-            lambda tmp: self.signinpage.driver.current_url != turl
-        )
+        self.wait_url(turl)
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, 'Привет, Вика!')
 
