@@ -30,3 +30,8 @@ class TestLessonPage(unittest.TestCase):
         self.start_up()
         title = self.lesson.value_info()
         self.assertEqual(title, 'Сказочное описание урока!')
+
+    def test_materials_is_ok(self):
+        self.start_up()
+        title = self.lesson.value_materials()
+        self.assertEqual(title, 'Рассказы А.С. Пушкина, сборник Темный карнавал Рэя Бредбери')
