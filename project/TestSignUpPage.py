@@ -205,4 +205,18 @@ class TestSignUpPage(unittest.TestCase):
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
 
-    
+    def test_error_registration_not_email(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.set_login('loginLoginLogin')
+        result = self.signinpage.click_button_submit()
+        self.assertNotEqual(result, True)
+
+    def test_error_registration_invalid_email(self):
+        self.start_up()
+        self.signinpage.open_url()
+        self.signinpage.set_login('loginLoginLogin')
+        self.signinpage.set_email('invalid_email')
+        result = self.signinpage.click_button_submit()
+        self.assertNotEqual(result, True)
+
