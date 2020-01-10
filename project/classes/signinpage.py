@@ -81,7 +81,7 @@ class SignInPage(Page):
     def select_value_to_master(self, element):
         element_type = type(element)
         teg = '#select_1'
-        if element_type == type('lol'):
+        if element_type == type('tmp'):
             return self.select_element_by_visible_text(teg, element)
         else:
             return self.select_element_by_index(teg, element)
@@ -89,7 +89,7 @@ class SignInPage(Page):
     def select_value_to_see(self, element):
         element_type = type(element)
         teg = '#select_2'
-        if element_type == type('lol'):
+        if element_type == type('tmp'):
             return self.select_element_by_visible_text(teg, element)
         else:
             return self.select_element_by_index(teg, element)
