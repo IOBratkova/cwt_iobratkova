@@ -7,6 +7,7 @@ class LessonsList(Page):
         super().__init__(d, u)
         self.title = 'LessonsList'
         self.miniunits = []
+        # self.get_list()
 
     def my_lessons(self):
         return self.find_element_by_id('my_lessons')
@@ -27,10 +28,13 @@ class LessonsList(Page):
         return res
 
     def click_next(self):
-        return self.click_on_element('next')
+        self.click_on_element('next')
+        self.get_list()
 
     def click_previous(self):
-        return self.click_on_element('previous')
+        self.click_on_element('previous')
+        self.get_list()
 
     def click_index(self, index):
-        return self.click_on_element(index)
+        self.click_on_element(str(index))
+        self.get_list()

@@ -4,3 +4,6 @@ class Unit():
         self.title = t
         self.descr = d
 
+    def __eq__(self, other):
+        return other.title == self.title and other.descr == self.descr
+
