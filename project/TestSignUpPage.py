@@ -270,3 +270,6 @@ class TestSignUpPage(unittest.TestCase):
         self.signinpage.set_ppassword('invalid_password')
         result = self.signinpage.click_button_submit()
         self.assertNotEqual(result, True)
+
+if __name__ == "__main__":
+    unittest.main()

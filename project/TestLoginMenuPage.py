@@ -52,3 +52,6 @@ class TestLoginMenuPage(unittest.TestCase):
         self.wait_update(our_user)
         user = self.driver.find_element_by_id('user-name').text
         self.assertEqual(user, our_user)
+
+if __name__ == "__main__":
+    unittest.main()

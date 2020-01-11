@@ -45,3 +45,7 @@ class TestLessonPage(unittest.TestCase):
                  'Фиксируем.\n' \
                  'Как только красивый ряд с бусинками из дерева или стекла готов, делаем три обычных ряда.'
         self.assertEqual(title, result)
+
+
+if __name__ == "__main__":
+    unittest.main()

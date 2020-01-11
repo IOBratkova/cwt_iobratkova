@@ -8,3 +8,6 @@ class TestPage(unittest.TestCase):
         page = Page(3, 4)
         self.assertNotEqual(page.driver, 10)
         self.assertNotEqual(page.url, 10)
+
+if __name__ == "__main__":
+    unittest.main()

@@ -11,6 +11,9 @@ class TestLessonListPage(unittest.TestCase):
         self.url = 'http://localhost:8080/#/lessonlist'
         self.ll = LessonsList(self.driver, self.url)
         self.ll.open_url()
+        WebDriverWait(self.driver, 100).until(
+            lambda tmp: self.driver.current_url != self.url
+        )
 
     def page_1(self):
         wait_units_1 = [Unit('id', 'Тестовый урок еще один', 'Ловец снов номер семь на нашем сайте'),
@@ -71,3 +74,7 @@ class TestLessonListPage(unittest.TestCase):
         self.ll.click_next()
         mini_units = self.ll.miniunits
         self.assertEqual(mini_units, true_units)
+
+
+if __name__ == "__main__":
+    unittest.main()
